@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            border: 1px solid #0e1606;
+        }
+    </style>
+</head>
+<body onload="turnOn()">
+<canvas id="myCanvas" height="360px" width="150px" onclick="iskluchi()"></canvas>
+
+</body>
+<script>
+    let canvas = document.getElementById("myCanvas")
+    let circle = canvas.getContext("2d")
+    let greenON = false;
+    let redON = false;
+    let yellowON = false;
+
+    let greenOFF = true;
+    let redOFF = true;
+    let yellowOFF = true;
+
+    let time
+    let  flag = false
+
+    function a(){
+
+        //RED
+        circle.beginPath()
+        circle.fillStyle = "#A11908";
+        circle.arc(70,60,50,0,2*Math.PI)
+        circle.fill()
+        circle.closePath()
+
+        //YELLOW
+        circle.beginPath()
+        circle.fillStyle = "#CBAF0F";
+        circle.arc(70,180,50,0,2*Math.PI)
+        circle.fill()
+        circle.closePath()
+
+        //GREEN
+        circle.beginPath()
+        circle.fillStyle = "#466D1B";
+        circle.arc(70,300,50,0,2*Math.PI)
+        circle.fill()
+        circle.closePath()
+    }
+
+    function turnOn(){
+        a();
+        time = setInterval(function (){
+            if(greenOFF) {
+                circle.beginPath()
+                circle.fillStyle = "#7EF910";
+                circle.arc(70, 300, 50, 0, 2 * Math.PI)
+                circle.fill()
+                circle.closePath()
+                console.log("green:on")
+
+                greenOFF = false;
+                greenON = true;
+            }
+            else if(greenON){
+                circle.beginPath()
+                circle.fillStyle = "#466D1B";
+                circle.arc(70, 300, 50, 0, 2 * Math.PI)
+                circle.fill()
+                circle.closePath()
+                console.log("green:off")
+
+                greenON = false
+                flag = false
+                yellowOFF = true
+            }
+            else if(yellowOFF){
+                circle.beginPath()
+                circle.fillStyle = "#FFF200";
+                circle.arc(70,180,50,0,2*Math.PI)
+                circle.fill()
+                circle.closePath()
+                console.log("yellow:on")
+
+                yellowON = true
+                yellowOFF = false
+            }
+            else if(yellowON){
+                circle.beginPath()
+                circle.fillStyle = "#CBAF0F";
+                circle.arc(70,180,50,0,2*Math.PI)
+                circle.fill()
+                circle.closePath()
+                console.log("yellow:off")
+
+                yellowON = false
+                if(flag) greenOFF = true
+                else redOFF = true
+            }
+            else if(redOFF){
+                circle.beginPath()
+                circle.fillStyle = "#FF0009";
+                circle.arc(70,60,50,0,2*Math.PI)
+                circle.fill()
+                circle.closePath()
+                console.log("red:on")
+
+                redON = true
+                redOFF = false
+            }
+            else if(redON){
+                circle.beginPath()
+                circle.fillStyle = "#A11908";
+                circle.arc(70,60,50,0,2*Math.PI)
+                circle.fill()
+                circle.closePath()
+                console.log("red:off")
+
+                redON = false
+                yellowOFF = true
+                flag = true
+            }
+
+        }, 1000)
+    }
+
+    function iskluchi(){
+        a();
+        clearInterval(time)
+        let flag = false
+
+        let interval = setInterval(function (){
+            if (flag===false){
+                circle.beginPath()
+                circle.fillStyle = "#CBAF0F";
+                circle.arc(70,180,50,0,2*Math.PI)
+                circle.fill()
+                circle.closePath()
+                console.log("yellow:off // iskluci")
+
+                flag = true
+            }
+            else if(flag){
+                circle.beginPath()
+                circle.fillStyle = "#FFF200";
+                circle.arc(70,180,50,0,2*Math.PI)
+                circle.fill()
+                circle.closePath()
+                console.log("yellow:on")
+
+                flag = false
+            }
+        }, 1000)
+
+
+
+    }
+
+</script>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="jquery_ui.css">
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+</head>
+<body>
+
+</body>
+
+<script>
+    let data = '[{"background-color":"red"}, {"background-color":"green"}, {"background-color":"gray"}, {"background-color":"orange"}, {"background-color":"cyan"}]'
+    data = JSON.parse(data)
+
+    let index = 1
+
+    let destination = 64
+    $(document).ready(function () {
+        let crvenDiv1 = $('<div>')
+        let crvenDiv2 = $('<div>')
+        let crvenDiv3 = $('<div>')
+        let crvenDiv4 = $('<div>')
+
+        let zoltDiv1 = $('<div>')
+        let zoltDiv2 = $('<div>')
+        let zoltDiv3 = $('<div>')
+        let zoltDiv4 = $('<div>')
+        let zoltDiv5 = $('<div>')
+        let zoltDiv6 = $('<div>')
+        let zoltDiv7 = $('<div>')
+        let zoltDiv8 = $('<div>')
+
+        $(zoltDiv1).attr('class', 'smeniBoja')
+        $(zoltDiv2).attr('class', 'smeniBoja')
+        $(zoltDiv3).attr('class', 'smeniBoja')
+        $(zoltDiv4).attr('class', 'smeniBoja')
+        $(zoltDiv5).attr('class', 'smeniBoja')
+        $(zoltDiv6).attr('class', 'smeniBoja')
+        $(zoltDiv7).attr('class', 'smeniBoja')
+        $(zoltDiv8).attr('class', 'smeniBoja')
+
+        let changeColorBTN = $('<button>Промени боја</button>')
+        changeColorBTN.attr('id', 'changeColor')
+
+        $(crvenDiv1).attr('class', 'changeColorWithBTN')
+        $(crvenDiv2).attr('class', 'changeColorWithBTN')
+        $(crvenDiv3).attr('class', 'changeColorWithBTN')
+        $(crvenDiv4).attr('class', 'changeColorWithBTN')
+
+        $(crvenDiv1).css({
+            'background-color': data[0]['background-color'],
+            'width': '75px',
+            'height': '75px',
+            'position': 'absolute',
+            'left': '150px',
+            'top' : '100px'
+        })
+        $(crvenDiv2).css({
+            'background-color':data[0]['background-color'],
+            'width':'75px',
+            'height':'75px',
+            'position':'absolute',
+            'left': '500px',
+            'top' : '100px'
+        })
+        $(crvenDiv3).css({
+            'background-color':data[0]['background-color'],
+            'width':'75px',
+            'height':'75px',
+            'position':'absolute',
+            'left': '150px',
+            'top' : '400px'
+        })
+        $(crvenDiv4).css({
+            'background-color':data[0]['background-color'],
+            'width':'75px',
+            'height':'75px',
+            'position':'absolute',
+            'left': '500px',
+            'top' : '400px'
+        })
+
+        $(zoltDiv1).css({
+            'background-color': 'yellow',
+            'width': '75px',
+            'height': '75px',
+            'position': 'absolute',
+            'left': '225px',
+            'top' : '100px'
+        })
+        $(zoltDiv2).css({
+            'background-color': 'yellow',
+            'width': '75px',
+            'height': '75px',
+            'position': 'absolute',
+            'left': '150px',
+            'top' : '175px'
+        })
+        $(zoltDiv3).css({
+            'background-color':'yellow',
+            'width':'75px',
+            'height':'75px',
+            'position':'absolute',
+            'left': '425px',
+            'top' : '100px'
+        })
+        $(zoltDiv4).css({
+            'background-color':'yellow',
+            'width':'75px',
+            'height':'75px',
+            'position':'absolute',
+            'left': '500px',
+            'top' : '175px'
+        })
+        $(zoltDiv5).css({
+            'background-color':'yellow',
+            'width':'75px',
+            'height':'75px',
+            'position':'absolute',
+            'left': '225px',
+            'top' : '400px'
+        })
+        $(zoltDiv6).css({
+            'background-color':'yellow',
+            'width':'75px',
+            'height':'75px',
+            'position':'absolute',
+            'left': '150px',
+            'top' : '325px'
+        })
+        $(zoltDiv7).css({
+            'background-color':'yellow',
+            'width':'75px',
+            'height':'75px',
+            'position':'absolute',
+            'left': '500px',
+            'top' : '325px'
+        })
+        $(zoltDiv8).css({
+            'background-color':'yellow',
+            'width':'75px',
+            'height':'75px',
+            'position':'absolute',
+            'left': '425px',
+            'top' : '400px'
+        })
+
+        $('body').append(changeColorBTN)
+            .append(crvenDiv1)
+            .append(crvenDiv2)
+            .append(crvenDiv3)
+            .append(crvenDiv4)
+            .append(zoltDiv1)
+            .append(zoltDiv2)
+            .append(zoltDiv3)
+            .append(zoltDiv4)
+            .append(zoltDiv5)
+            .append(zoltDiv6)
+            .append(zoltDiv7)
+            .append(zoltDiv8)
+
+        $(crvenDiv1).click(function (){
+            zoltDiv1.animate({
+                left : 225 + destination + "px"
+            },3000);
+            zoltDiv2.animate({
+                top : 175 + destination/2 + 10 + "px"
+            },3000);
+
+        });
+        $(crvenDiv2).click(function (){
+            zoltDiv3.animate({
+                left : 425 - destination + "px"
+            }, 3000);
+            zoltDiv4.animate({
+                top : 175 + destination/2 + 10 + "px"
+            }, 3000);
+        });
+        $(crvenDiv3).click(function (){
+            zoltDiv5.animate({
+                left : 225 + destination + "px"
+            },3000);
+            zoltDiv6.animate({
+                top : 325 - destination/2 - 10 + "px"
+            },3000);
+        })
+        $(crvenDiv4).click(function (){
+            zoltDiv7.animate({
+                top : 325 - destination/2 - 10 + "px"
+            },3000);
+            zoltDiv8.animate({
+                left : 425 - destination + "px"
+            },3000);
+        });
+
+        $(".smeniBoja").dblclick(function (){
+            $(this).css({'background-color':'blue'})
+        })
+
+        $("#changeColor").click(function (){
+            if(index >= data.length)
+                index = 0
+            $(".changeColorWithBTN").css({
+                'background-color' : data[index]['background-color']
+            })
+            index++
+        })
+
+    });
+</script>
+
+</html>

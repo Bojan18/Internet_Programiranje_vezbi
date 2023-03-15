@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+
+<script>
+    let first = prompt("Enter array and then n, example [7, 9, 0, -2],3, after the comma ',' you must enter a space");
+
+    let theArray = first.substring(1, first.lastIndexOf(']'));
+    let arr = theArray.split(", ");
+    let n = first.substring(first.length-1, first.length);
+
+    console.log(n);
+    console.log(arr);
+    console.log(arr.length);
+    console.log(theArray);
+    console.log(first);
+</script>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="firstDiv">
+
+    <h1>Промена на позадина</h1>
+
+    <input type="radio" name="background" id="color">
+    <label for="color">Color</label>
+    <input type="radio" name="background" id="image">
+    <label for="image">Image</label>
+
+    <br>
+
+    <p>Value:</p>
+    <input type="text" id="value">
+
+    <button onclick="promeni()">Промени</button>
+
+</div>
+
+</body>
+<script>
+
+    function isWeb(str){
+        return str.includes("http") || str.includes("https")
+    }
+
+    function promeni(){
+        let value = document.getElementById("value").value
+        let color = document.getElementById("color")
+        let image = document.getElementById("image")
+        let firstDiv = document.getElementById("firstDiv")
+
+
+        if(color.checked && !isWeb(value)){
+            firstDiv.style.backgroundColor = value
+            return;
+        }
+
+        if(image.checked && isWeb(value)) {
+            firstDiv.style.backgroundImage = 'url(' + value + ')'
+        } else alert("Enter a valid image link, if you dont" +
+            " know how to get an image link go to google images" +
+            " and right click an image and click copy image link")
+    }
+
+</script>
+<style>
+    p{
+        display: inline-block;
+    }
+    #firstDiv{
+        width: 500px;
+        height: 500px;
+    }
+</style>
+</html>

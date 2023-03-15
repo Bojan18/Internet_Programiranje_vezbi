@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+
+<script>
+    function Book(title, author, alreadyRead){
+        this.title = title;
+        this.author = author;
+        this.alreadyRead = alreadyRead;
+
+        this.print = function (){
+            //'You already read "The Hobbit" by J.R.R. Tolkien'
+            //'You still need to read "The Lord of the Rings" by J.R.R. Tolkien.'
+            let newBook = "";
+            if(alreadyRead){
+                newBook += "You already read ";
+            }
+            else if(!alreadyRead)
+                newBook += "You still need to read ";
+
+            newBook += '"' + title + '" by ' + author;
+
+            return newBook;
+        }
+
+    }
+
+    let book1 = new Book("The Hobbit", "J.R.R. Tolkien", true);
+    let book2 = new Book("The Lord Of The Rings", "J.R.R. Tolkien", false);
+
+    console.log(book1.print());
+    console.log(book2.print());
+
+</script>
+
+</html>

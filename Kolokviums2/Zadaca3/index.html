@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="jquery_ui.css">
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+</head>
+<body>
+<button id="moveUP">UP</button>
+<button id="moveDOWN">DOWN</button>
+<button id="moveRIGHT">RIGHT</button>
+<button id="moveLEFT">LEFT</button>
+<button id="changeColor">CHANGE COLOR</button>
+
+</body>
+<script>
+    let data = '[{"background-color":"red"}, {"background-color":"green"}, {"background-color":"blue"}, {"background-color":"orange"}]'
+    data = JSON.parse(data)
+    let index = 1
+    let move = 100
+    let target = 0
+
+    $(document).ready(function (){
+        let div = $('<div>');
+        div.css({
+            "background-color": data[0]['background-color'],
+            "width" : 50 + "px",
+            "height" : 50 + "px",
+            "position" : "relative"
+        });
+        div.appendTo('body');
+
+        $("#changeColor").click(function (){
+            div.css({
+                "background-color" : data[index]['background-color']
+            });
+            index++
+            if(index >= data.length)
+                index = 0
+        });
+
+        $("#moveUP").click(function (){
+            div.animate({
+                bottom : move + "px"
+            }, 2500);
+        });
+
+        $("#moveDOWN").click(function (){
+            div.animate({
+                top : move + "px"
+            }, 2500);
+        });
+
+        $("#moveRIGHT").click(function (){
+            div.animate({
+                left : move + "px"
+            }, 2500);
+        });
+
+        $("#moveLEFT").click(function (){
+            div.animate({
+                right : move + "px"
+            }, 2500);
+        });
+
+    });
+
+</script>
+<style>
+</style>
+</html>

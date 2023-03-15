@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="jquery_ui.css">
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+</head>
+
+<body>
+<div>
+    <label>X:</label>
+    <input type="text" id="x">
+</div>
+<div>
+    <label>Y:</label>
+    <input type="text" id="y">
+</div>
+<div>
+    <label>Rotate:</label>
+    <input type="text" id="rotate">
+</div>
+<div>
+    <button id="btnJSON" onclick="btnJSON()">To Json</button>
+    <button id="animate">Animate</button>
+</div>
+</body>
+
+<script>
+        function Kvadrat(x,y,rotate){
+            this.x = x;
+            this.y = y;
+            this.rotate = rotate;
+        }
+
+        function btnJSON(){
+            let inputOdX = document.getElementById("x").value
+            let inputOdY = document.getElementById("y").value
+            let rotateObj = document.getElementById("rotate").value
+            let kvadratce = new Kvadrat(inputOdX, inputOdY, rotateObj)
+
+            let data = JSON.stringify(kvadratce)
+            console.log(data);
+        }
+
+        $(document).ready(function (){
+            let newDiv = $('<div>')
+            $(newDiv).attr('class', 'vrtiSe')
+            $(newDiv).css({
+                'background-color':'red',
+                'width':'100px',
+                'height':'100px',
+                'position':'absolute'
+            })
+            $('body').append(newDiv)
+
+            $('#animate').click(function (){
+                $(newDiv).animate({
+                    left : document.getElementById("x").value + "px"
+                },1000)
+                $(newDiv).animate({
+                    bottom : document.getElementById("y").value + "px"
+                },1000)
+                $(".vrtiSe").css({
+                    "transform": "rotate(" + document.getElementById("rotate").value + "deg)"
+                });
+            });
+        });
+</script>
+</html>

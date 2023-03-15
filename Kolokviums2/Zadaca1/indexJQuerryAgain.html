@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="jquery_ui.css">
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+</head>
+<body>
+
+<button id="moveToTheLeft"><</button>
+<button id="moveToTheRight">></button>
+
+</body>
+
+<script>
+    let data = '[{"background-color":"red", "width":"100px", "height":"100px"}, {"background-color":"green", "width":"50px", "height":"100px"}, {"background-color":"blue", "width":"100px", "height":"50px"}]'
+    data = JSON.parse(data)
+    let index = 0
+
+
+    let newDiv = $('<div>');
+
+    $(newDiv).css({
+        'background-color': data[0]['background-color'],
+        'width': data[0]['width'],
+        'height': data[0]['height'],
+        'position': 'absolute'
+    });
+
+    $(newDiv).attr('id', 'movableObj')
+    $('body').append(newDiv);
+
+    $('#moveToTheRight').click(function () {
+
+        index++
+        if (index >= data.length)
+            index = 0
+
+        $('#movableObj').animate({
+            left: "2000px"
+        }, 1000,).attr('id', 'stationaryObj');
+
+        let newDiv1 = $('<div>');
+        $(newDiv1).css({
+            'background-color': data[index]['background-color'],
+            'width': data[index]['width'],
+            'height': data[index]['height'],
+            'position': 'absolute',
+            'left': '-100px'
+        });
+
+        $('body').append(newDiv1);
+
+        $(newDiv1).animate({
+            left: "0px"
+        }, 1000)
+        $(newDiv1).attr('id', 'movableObj')
+    });
+
+    $('#moveToTheLeft').click(function () {
+
+        index--
+        if (index < 0)
+            index = 2
+
+        $('#movableObj').animate({
+            left: "-100px"
+        }, 1000,).attr('id', 'stationaryObj');
+
+        let newDiv1 = $('<div>');
+        $(newDiv1).css({
+            'background-color': data[index]['background-color'],
+            'width': data[index]['width'],
+            'height': data[index]['height'],
+            'position': 'absolute',
+            'left': '2000px'
+        });
+
+        $('body').append(newDiv1);
+
+        $(newDiv1).animate({
+            left: "0px"
+        }, 1000)
+        $(newDiv1).attr('id', 'movableObj')
+
+    });
+
+</script>
+
+</html>

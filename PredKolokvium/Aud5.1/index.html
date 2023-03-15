@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>Форма за контакт</h2>
+<div>
+    <p>Ime</p>
+    <input type="text" id="name">
+    <br>
+    <p>Prezime</p>
+    <input type="text" id="surname">
+    <br>
+    <p>Email</p>
+    <input type="text" id="mail">
+    <br>
+    <p>Vozrast</p>
+    <select id="age">
+        <option>19</option>
+        <option>20</option>
+        <option>21</option>
+        <option>22</option>
+        <option>23</option>
+    </select>
+</div>
+
+<button onclick="add()">Add</button>
+<br>
+<input disabled = disabled id="disabled">
+
+</body>
+<script src="script.js"></script>
+<style>
+    #disabled{
+        width: 300px;
+    }
+    p{
+        display: inline-block;
+    }
+</style>
+</html>

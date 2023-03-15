@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+    <link rel="stylesheet" href="jquery_ui.css">
+</head>
+<body>
+<span id="spanTimer">60</span>
+</body>
+<script>
+    let spanTimer = document.getElementById("spanTimer")
+    let count = 60
+    let timer = setInterval(function() {
+        $("#counter").html(count--);
+        spanTimer.innerHTML = count
+        if(count == 0)
+            clearInterval(timer);
+    }, 1000);
+</script>
+</html>

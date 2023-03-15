@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="moveToLeft()"><</button>
+<button onclick="moveToRight()">></button>
+</body>
+
+<script>
+    let body = document.getElementsByTagName('body');
+    let data = '[{"background-color":"red", "width":"100px", "height":"100px"}, {"background-color":"green", "width":"50px", "height":"100px"}, {"background-color":"blue", "width":"100px", "height":"50px"}]'
+    data = JSON.parse(data);
+
+    let div = document.createElement('div');
+    div.style.backgroundColor = data[0]["background-color"]
+    div.style.width = data[0]["width"]
+    div.style.height = data[0]["height"]
+    div.style.position = "absolute"
+    let moveLeft = 0
+    let index = 0
+
+    document.body.appendChild(div);
+
+    function moveToLeft(){
+        let interval1 = setInterval(function (){
+            let position = -100;
+            moveLeft -= 5
+            div.style.left = moveLeft + "px"
+
+            if(moveLeft < position) {
+                clearInterval(interval1)
+                index++
+
+                if(index === 3)
+                    index = 0
+
+                div.style.backgroundColor = data[index]["background-color"]
+                div.style.width = data[index]["width"]
+                div.style.height = data[index]["height"]
+                moveLeft = 300
+
+                div.style.left = moveLeft + "px"
+                let interval2 = setInterval(function (){
+                    moveLeft -=5
+                    div.style.left = moveLeft + "px"
+
+                    if(moveLeft <= 0){
+                        clearInterval(interval2);
+                    }
+
+                },20)
+            }
+
+        }, 20)
+
+        console.log("moving left")
+    }
+
+    function moveToRight(){
+        let interval1 = setInterval(function (){
+            let position = 100;
+            moveLeft += 5
+            div.style.left = moveLeft + "px"
+
+            if(moveLeft > position) {
+                clearInterval(interval1)
+                index++
+
+                if(index === 3)
+                    index = 0
+
+                div.style.backgroundColor = data[index]["background-color"]
+                div.style.width = data[index]["width"]
+                div.style.height = data[index]["height"]
+                moveLeft = 0
+
+                div.style.left = moveLeft + "px"
+                let interval2 = setInterval(function (){
+                    moveLeft +=5
+                    div.style.left = moveLeft + "px"
+
+                    if(moveLeft > 300){
+                        clearInterval(interval2);
+                    }
+
+                },20)
+            }
+
+        }, 20)
+
+        console.log("moving right")
+    }
+
+</script>
+
+</html>

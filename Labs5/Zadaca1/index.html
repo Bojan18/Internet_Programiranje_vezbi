@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Калкулатор</h1>
+<div>
+    <div style="text-align:left; float:left">
+        <p>а <input id="a" style="width:15px"/>
+            b <input id="b" style="width:15px"/></p>
+        <p>
+            <input id="plus" type="radio" name="oper" checked>a+b
+            <input id="minus" type="radio" name="oper">a-b
+            <input id="mnoz" type="radio" name="oper" >a*b
+            <input id="del" type="radio" name="oper" >a/b
+            <br>
+            <input id="sin" type="radio" name="oper">sin(a)
+            <input id="cos" type="radio" name="oper">cos(a)
+            <input id="tg" type="radio" name="oper">tg(a)
+            <br>
+            <input id="cel" type="radio" name="oper">[a]
+            <input id="stepen" type="radio" name="oper">a<sup>b</sup>
+            <input id="koren" type="radio" name="oper">&radic;<span style="text-decoration:overline">a</span>
+        </p>
+        <button onclick="presmetaj()">Пресметај</button>
+        <p id="rezultat"></p>
+    </div>
+</div>
+<br/>
+</body>
+
+<script>
+    function presmetaj(){
+        let firstNum = document.getElementById('a').value
+        let secondNum = document.getElementById('b').value
+        firstNum = parseInt(firstNum)
+        secondNum = parseInt(secondNum)
+        let rezultat = document.getElementById('rezultat')
+
+        let plus = document.getElementById('plus')
+        let minus = document.getElementById('minus')
+        let mult = document.getElementById('mnoz')
+        let divide = document.getElementById('del')
+        let sin = document.getElementById('sin')
+        let cos = document.getElementById('cos')
+        let tan = document.getElementById('tg')
+        let positiveFirstNum = document.getElementById('cel')
+        let stepen = document.getElementById('stepen')
+
+        if(plus.checked)
+            rezultat.innerHTML = firstNum + secondNum
+        else if(minus.checked)
+            rezultat.innerHTML = firstNum - secondNum
+        else if(mult.checked)
+            rezultat.innerHTML = firstNum * secondNum
+        else if(divide.checked)
+            rezultat.innerHTML = firstNum / secondNum
+        else if(sin.checked)
+            rezultat.innerHTML = Math.sin(firstNum)
+        else if(cos.checked)
+            rezultat.innerHTML = Math.cos(firstNum)
+        else if(tan.checked)
+            rezultat.innerHTML = Math.tan(firstNum)
+        else if(positiveFirstNum.checked)
+            if(firstNum >= 0)
+                rezultat.innerHTML = firstNum
+            else rezultat.innerHTML = firstNum * -1
+        else if(stepen.checked){
+            let sum = 1
+            for (let i = 1; i <= secondNum; i++) {
+                sum *= firstNum
+            }
+            rezultat.innerHTML = sum
+        }
+        else if(koren.checked)
+            rezultat.innerHTML = Math.sqrt(firstNum)
+
+    }
+</script>
+
+</html>

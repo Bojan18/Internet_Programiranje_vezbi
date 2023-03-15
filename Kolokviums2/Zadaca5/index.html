@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="jquery_ui.css">
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+</head>
+<body>
+
+</body>
+
+<script>
+
+    $(document).ready(function (){
+        let ednocifren1 = Math.ceil(Math.random() * 9)
+        let ednocifren2 = Math.ceil(Math.random() * 9)
+
+        let dvocifren1 = Math.ceil(Math.random() * 90 + 10)
+        let dvocifren2 = Math.ceil(Math.random() * 90 + 10)
+
+        let trocifren1 = Math.ceil(Math.random() * 900 + 100)
+        let trocifren2 = Math.ceil(Math.random() * 900 + 100)
+
+        let input = $('<input>')
+        let btn = $('<button>Провери</button>')
+
+        $('body').append(ednocifren1 + " ")
+            .append(ednocifren2 + " ")
+            .append(dvocifren1 + " ")
+            .append(dvocifren2 + " ")
+            .append(trocifren1 + " = ")
+            .append(trocifren2)
+            .append(btn)
+            .append('<br>')
+            .append(input)
+
+        $(btn).click(function (){
+            if($('input').val() == trocifren2){
+                $('input').attr('disabled', 'disabled')
+                $(btn).attr('disabled', 'disabled')
+            }
+            console.log($('input').val())
+        })
+
+
+    })
+
+</script>
+
+</html>

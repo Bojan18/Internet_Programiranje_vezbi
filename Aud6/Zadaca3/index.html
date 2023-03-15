@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var library = [
+        {
+            author: 'Bill Gates',
+            title: 'The Road Ahead',
+            readingStatus: true
+        },
+        {
+            author: 'Steve Jobs',
+            title: 'Walter Isaacson',
+            readingStatus: true
+        },
+        {
+            author: 'Suzanne Collins',
+            title: 'Mockingjay: The Final Book of The Hunger Games',
+            readingStatus: false
+        }];
+
+    //книга, автор и статус
+
+    for (let i = 0; i < library.length; i++) {
+        var book = library[i].title + " is a book by " + library[i].author;
+
+        if(library[i].readingStatus == true)
+            book += " and you have read this book.";
+        else book += " and you have yet to read this book."
+
+        console.log(book);
+
+    }
+
+</script>
+
+</body>
+</html>

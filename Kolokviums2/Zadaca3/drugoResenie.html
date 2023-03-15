@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+    <link rel="stylesheet" href="jquery_ui.css">
+
+</head>
+
+<body>
+<script>
+    var btn1 = document.createElement("BUTTON");
+    var t1 = document.createTextNode("UP");
+    btn1.appendChild(t1);
+    document.body.appendChild(btn1);
+
+    var btn2 = document.createElement("BUTTON");
+    var t2 = document.createTextNode("DOWN");
+    btn2.appendChild(t2);
+    document.body.appendChild(btn2);
+
+    var btn3 = document.createElement("BUTTON");
+    var t3 = document.createTextNode("RIGHT");
+    btn3.appendChild(t3);
+    document.body.appendChild(btn3);
+
+    var btn4 = document.createElement("BUTTON");
+    var t4 = document.createTextNode("LEFT");
+    btn4.appendChild(t4);
+    document.body.appendChild(btn4);
+
+    var btn5 = document.createElement("BUTTON");
+    var t5 = document.createTextNode("CHANGE COLOR");
+    btn5.appendChild(t5);
+    document.body.appendChild(btn5);
+
+
+    $(document).ready(function() {
+
+        $(btn1).click(function () {
+            $("div").animate({
+                top: '10px',
+            });
+        });
+
+        $(btn2).click(function () {
+            $("div").animate({
+                bottom: '-=10px',
+            });
+        });
+
+        $(btn3).click(function () {
+            $("div").animate({
+                right: '-=10px'});
+        });
+
+        $(btn4).click(function () {
+            $("div").animate({
+                left: '10px'
+            });
+        });
+    });
+
+
+
+
+</script>
+
+
+<div id="div1" style="width:50px;height:50px;background-color:red; position:absolute; margin-top: 25px;"></div><br>
+
+
+</body>
+</html>

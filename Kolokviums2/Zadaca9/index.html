@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="jquery_ui.css">
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+</head>
+<body>
+
+<h2>Систем за сметки</h2>
+
+<p>Име: </p>
+<input type="text" id="ime">
+<br>
+<p>Презиме: </p>
+<input type="text" id="prezime">
+<br>
+<p>ID: </p>
+<input type="text" id="id">
+<br>
+<p>Промет: </p>
+<input type="text" id="promet">
+<br>
+
+<button id="proveri">Провери</button>
+
+<h2>Внесени сметки</h2>
+
+</body>
+
+<script>
+
+    function golemiBukvi(c) {
+        if (c >= 'A' && c <= 'Z')
+            return true
+        else return false
+    }
+
+    $('#proveri').click(function () {
+        let prezime = document.getElementById('prezime').value
+        let id = document.getElementById('id').value
+        let promet = document.getElementById('promet').value
+        let ime = document.getElementById("ime").value
+
+        let smetkaBroj = Math.ceil(Math.random() * 90000 + 10000)
+        console.log(smetkaBroj);
+
+        if (id.length === 9) {
+            alert("Id is too short")
+        } else {
+            let counter = 0
+            for (let i = 0; i < id.length; i++) {
+                if (golemiBukvi(id[i]))
+                    counter++
+            }
+            if (counter < 3) {
+                alert("Not enough upper cased letters")
+                return;
+            }
+        }
+
+        let div = $('<div>')
+        let smetkaP = $('<p>Сметка број : </p>')
+        let imeP = $('<p>Име : </p>')
+        let prezimeP = $('<p>Презиме : </p>')
+        let idP = $('<p>ID : </p>')
+        let prometP = $('<p>Промет : </p>')
+        let platiBTN = $('<button>Плати</button>')
+
+        platiBTN.attr('id', 'plati')
+
+        div.append(smetkaP).append(smetkaBroj).append('<br>')
+            .append(imeP).append(ime).append('<br>')
+            .append(prezimeP).append(prezime).append('<br>')
+            .append(idP).append(id).append('<br>')
+            .append(prometP).append(promet).append('<br>')
+            .append('<br>').append(platiBTN)
+
+        $('body').append(div);
+
+        $(smetkaP).css({
+            'display': 'inline'
+        })
+
+        $(imeP).css({
+            'display': 'inline'
+        })
+        $(prezimeP).css({
+            'display': 'inline'
+        })
+        $(idP).css({
+            'display': 'inline'
+        })
+        $(prometP).css({
+            'display': 'inline'
+        })
+
+        $('div').css({
+            "border": "1px solid black",
+            'width': 200 + "px"
+        })
+        //123QWE4567
+        $('#plati').click(function () {
+            if (document.getElementById('promet').value < 500) {
+                $(this).css({
+                    'background-color': 'lightgreen'
+                })
+                return;
+            }
+            else {
+                $(this).css({
+                    'background-color': 'red'
+                })
+                return;
+            }
+        })
+    })
+
+</script>
+
+</html>

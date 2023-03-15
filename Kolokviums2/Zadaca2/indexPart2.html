@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="jquery_ui.css">
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+</head>
+<body>
+
+<div></div>
+
+</body>
+<script>
+    $(document).ready(function (){
+        let canvas = $('<div>')
+        canvas.css({
+            'width' : 200 + "px",
+            'height' : 500 + "px",
+            'border' : '1px black solid',
+            'position':'absolute'
+        })
+
+        $('body').append(canvas)
+
+        let crveno = $('<div>')
+        let zolto = $('<div>')
+        let zeleno = $('<div>')
+
+        $(crveno).attr('class', 'golemina')
+        $(zolto).attr('class', 'golemina')
+        $(zeleno).attr('class', 'golemina')
+
+        $(crveno).css({
+            'background-color':'red',
+            'width' : 100 + 'px',
+            'height': 100 + 'px',
+            'position':'absolute',
+            'left': 55 +'px',
+            'top' : 50 + 'px',
+            'border-radius' : 50 + 'px'
+        })
+
+        $(zolto).css({
+            'background-color':'yellow',
+            'width' : 100 + 'px',
+            'height': 100 + 'px',
+            'position':'absolute',
+            'left': 55 +'px',
+            'top' : 200 + 'px',
+            'border-radius' : 50 + 'px'
+        })
+
+        $(zeleno).css({
+            'background-color':'green',
+            'width' : 100 + 'px',
+            'height': 100 + 'px',
+            'position':'absolute',
+            'left': 55 +'px',
+            'top' : 350 + 'px',
+            'border-radius' : 50 + 'px'
+        })
+        $('body').append(crveno).append(zolto).append(zeleno)
+
+        let greenON = false, yellowON = false, redON = false
+        let greenOFF = true, yellowOFF = true, redOFF = true
+        let flag = false
+
+
+        let time = setInterval(function (){
+            if(greenOFF){
+                $(zeleno).css({
+                    'background-color':'lightgreen'
+                })
+                greenON = true
+                greenOFF = false
+            }
+            else if(greenON){
+                $(zeleno).css({
+                    'background-color':'green'
+                })
+                greenON = false
+                yellowOFF = true
+                flag = false
+            }
+            else if(yellowOFF){
+                $(zolto).css({
+                    'background-color': '#f7ff87'
+                })
+                yellowOFF = false
+                yellowON = true
+            }
+            else if(yellowON){
+                $(zolto).css({
+                    'background-color': 'yellow'
+                })
+                yellowON = false
+                if(flag) greenOFF = true
+                else redOFF = true
+            }
+            else if(redOFF){
+                $(crveno).css({
+                    'background-color': '#fa7d7d'
+                })
+                redON = true
+                redOFF = false
+            }
+            else if(redON){
+                $(crveno).css({
+                    'background-color':'red'
+                })
+                redON = false
+                yellowOFF = true
+                flag = true
+            }
+        },1000)
+
+        $(canvas).click(function (){
+            clearInterval(time)
+            yellowON = false
+            yellowOFF = true
+            let interval2 = setInterval(function (){
+                if(yellowOFF){
+                    $(zolto).css({
+                        'background-color': '#f7ff87'
+                    })
+                    yellowOFF = false
+                    yellowON = true
+                }
+                else if(yellowON){
+                    $(zolto).css({
+                        'background-color': 'yellow'
+                    })
+                    yellowON = false
+                    yellowOFF = true
+                }
+            },1000)
+        })
+
+    })
+</script>
+</html>

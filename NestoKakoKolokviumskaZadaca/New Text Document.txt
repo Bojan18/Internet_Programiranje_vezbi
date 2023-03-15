@@ -1,0 +1,12 @@
+da ima stranata 
+inputi ime, prezime, plata, mail(gmail, yahoo, outlook)
+ime, prezime, plata, mail ne smee korisnikot da gi ostave prazni
+plata da e samo brojki, ako ne so alert da kaze
+mail da javi problem alert ako ne e mail
+
+
+da ima edno working kopce "Add" koa e kliknano da go dodade
+rabotniko u tabela, tabelata da e 
+NAME SURNAME PLATA MAIL
+
+i najdole da ima sum i average plata od site rabotnici so se dodadeni!

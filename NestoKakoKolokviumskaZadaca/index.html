@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="script.js"></script>
+</head>
+<body>
+
+<style>
+    #table, td{
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+</style>
+
+<div class="firstDiv">
+    <p>Name</p>
+    <input type="text" id="name">
+
+    <p>Surname</p>
+    <input type="text" id="surname">
+
+    <p>Payment</p>
+    <input type="text" id="payment">
+
+    <p>Email</p>
+    <input type="text" id="email">
+</div>
+
+<button onclick="add()">Add</button>
+
+<div>
+    <table id="table">
+
+    </table>
+
+
+    <p>Sum of payments = <span id="sumPayments">0</span></p>
+    <p>Average of payments = <span id="sumPaymentsAVG">0</span></p>
+
+</div>
+
+</body>
+</html>

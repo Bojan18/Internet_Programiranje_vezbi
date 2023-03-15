@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="moveLeft()"><</button>
+<button onclick="moveRight()">></button>
+</body>
+
+<script>
+    let body = document.getElementsByClassName('body')
+    let data = '[{"background-color":"red", "width":"100px", "height":"100px"}, {"background-color":"green", "width":"50px", "height":"100px"}, {"background-color":"blue", "width":"100px", "height":"50px"}]'
+    data = JSON.parse(data)
+    let index = 0
+
+    let div = document.createElement('div')
+    div.style.backgroundColor = data[0]["background-color"]
+    div.style.height = data[0]["height"]
+    div.style.width = data[0]["width"]
+    div.style.position = 'absolute'
+    div['positions_left'] = 0
+
+    document.body.appendChild(div)
+
+    function moveLeft(){
+        let interval1 = setInterval(function (){
+            let position = -100
+            div['positions_left'] -= 5
+            div.style.left = div['positions_left'] + "px"
+
+            if(div['positions_left'] < position){
+                clearInterval(interval1)
+                console.log("done for first div");
+                index++;
+                if(index >= data.length)
+                    index = 0
+
+                div['positions_left'] = 300
+                div.style.backgroundColor = data[index]["background-color"]
+                div.style.height = data[index]["height"]
+                div.style.width = data[index]["width"]
+
+                let interval2 = setInterval(function (){
+                    div['positions_left'] -= 5
+                    div.style.left = div['positions_left'] + "px"
+
+                    if(div['positions_left'] < 0)
+                        clearInterval(interval2)
+                },20)
+
+            }
+
+        }, 20)
+    }
+
+    function moveRight(){
+        let interval1 = setInterval(function (){
+            let position = 300
+            div['positions_left'] += 5
+            div.style.left = div['positions_left'] + "px"
+
+            if(div['positions_left'] > position){
+                clearInterval(interval1)
+                console.log("done for first div");
+                index++;
+                if(index >= data.length)
+                    index = 0
+
+                div['positions_left'] = -100
+                div.style.backgroundColor = data[index]["background-color"]
+                div.style.height = data[index]["height"]
+                div.style.width = data[index]["width"]
+
+                let interval2 = setInterval(function (){
+                    div['positions_left'] += 5
+                    div.style.left = div['positions_left'] + "px"
+
+                    if(div['positions_left'] > 0)
+                        clearInterval(interval2)
+                },20)
+
+            }
+
+        }, 20)
+    }
+
+</script>
+
+</html>

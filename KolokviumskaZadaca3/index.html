@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="leftDiv">
+    <h2>Details</h2>
+    <p>Name</p>
+    <input id="name" type="text" class="yes">
+    <br>
+    <p>Index</p>
+    <input id="index" type="text" class="yes">
+    <br>
+    <p>Phone</p>
+    <input id="phone" type="text" class="yes">
+    <br>
+    <p>Grade</p>
+    <input type="radio" name="ocena" value="5">5
+    <input type="radio" name="ocena" value="6">6
+    <input type="radio" name="ocena" value="7">7
+    <input type="radio" name="ocena" value="8">8
+    <input type="radio" name="ocena" value="9">9
+    <input type="radio" name="ocena" value="10">10
+    <br>
+    <p>Session</p>
+    <select id="session">
+        <option>January</option>
+        <option>June</option>
+        <option>September</option>
+    </select>
+    <br>
+    <button onclick="importStudent()">Import student</button>
+    <h3>Students (average : <span id="avg">0</span>)</h3>
+    <table>
+        <thead>
+        <tr>
+            <td>Name</td>
+            <td>Index</td>
+            <td>Phone</td>
+            <td>Grade</td>
+            <td>Session</td>
+            <td>Actions</td>
+        </tr>
+        </thead>
+        <tbody id="tableBody">
+
+        </tbody>
+    </table>
+</div>
+
+<div id="rightDiv">
+    <h3>Revert history</h3>
+    <ul id="revertList">
+
+    </ul>
+</div>
+
+
+</body>
+<script>
+    function importStudent(){
+        let grade = document.getElementsByName("ocena")
+        let getOcenka = 0;
+        for (let i = 0; i < 6; i++) {
+            if(grade[i].checked)
+                getOcenka = grade[i].value
+        }
+
+        let name = document.getElementById("name").value
+        let index = document.getElementById("index").value
+        let phone = document.getElementById("phone").value
+        let session = document.getElementById("session").value
+
+        let tableBody = document.getElementById("tableBody")
+
+        let row = tableBody.insertRow(0)
+        let cell1 = row.insertCell(0)
+        let cell2 = row.insertCell(1)
+        let cell3 = row.insertCell(2)
+        let cell4 = row.insertCell(3)
+        cell4.setAttribute('class', 'grade')
+        let cell5 = row.insertCell(4)
+        let cell6 = row.insertCell(5)
+
+        cell1.innerHTML = name
+        cell2.innerHTML = index
+        cell3.innerHTML = phone.substring(0, 3) + '/' + phone.substring(3, 6) + '-' + phone.substring(6, )
+        cell4.innerHTML = getOcenka
+        cell5.innerHTML = session
+
+        let confirm = document.createElement('button')
+        confirm.innerHTML = 'Confirm'
+        confirm.onclick = function (){
+            row.style.backgroundColor = "lightgreen";
+            confirm.disabled = 'disabled'
+            remove.disabled = 'disabled'
+        }
+        let remove = document.createElement('button')
+        remove.innerHTML = 'Remove'
+        remove.onclick = function (){
+            let list = document.getElementById('revertList')
+            let listItem = document.createElement('li')
+            let listItemNode = document.createTextNode(index + '-' + "grade " + getOcenka)
+            listItem.appendChild(listItemNode)
+            list.appendChild(listItem)
+            row.remove()
+            avgGrade()
+        }
+        cell6.appendChild(confirm)
+        cell6.appendChild(remove)
+
+        avgGrade()
+
+    }
+
+    function avgGrade(){
+        let grades = document.getElementsByClassName('grade')
+        let sum = 0;
+        for (let i = 0; i < grades.length; i++) {
+            sum += parseInt(grades[i].innerHTML)
+        }
+        document.getElementById("avg").innerHTML = sum / grades.length
+    }
+</script>
+<style>
+    #rightDiv{
+        width: 30%;
+        display: inline-block;
+        float: left;
+    }
+    #leftDiv{
+        width: 30%;
+        display: inline-block;
+        float: left;
+    }
+    p{
+        display: inline-block;
+    }
+    table, td{
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 2px;
+        text-align: center;
+        padding: 3px;
+    }
+</style>
+</html>

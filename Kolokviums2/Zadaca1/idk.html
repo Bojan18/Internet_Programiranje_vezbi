@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style rel="stylesheet" type="text/css"></style>
+</head>
+<body>
+<form action="#">
+    <h3><b>Систем за сметки</b></h3>
+    <label for="name">Име:</label>
+    <input type="text" id="name"> <br>
+    <label for="surname">Презиме:</label>
+    <input type="text" id="surname"> <br>
+    <label for="id">ID</label>
+    <input type="text" id="id"> <br>
+    <label for="money">Промет</label>
+    <input type="text" id="money"> <br>
+    <button type="button" id="saveButton">Зачувај</button>
+</form>
+<h3><b>Внесени сметки</b></h3>
+<div id="enteredBills"></div>
+<h3>Платени сметки</h3>
+<div id="payedBills"></div>
+<script language="JavaScript" type="text/javascript">
+    let jsonObject = {
+        "ime": "Nikola",
+        "prezime": "Nikolovski",
+        "id": 1234567890,
+        "promet": 1500
+    }
+    let name = document.querySelector("#name")
+    let surname = document.querySelector("#surname")
+    let id = document.querySelector("#id")
+    let money = document.querySelector("#money")
+    name.value = jsonObject.ime
+    surname.value = jsonObject.prezime
+    id.value = jsonObject.id
+    money.value = jsonObject.promet
+    let saveButton = document.querySelector("#saveButton")
+    saveButton.addEventListener("click", () => {
+        let name = document.querySelector("#name")
+        let surname = document.querySelector("#surname")
+        let id = document.querySelector("#id")
+        let money = document.querySelector("#money")
+        if(id.value.length === 10 && !isNaN(money.value)) {
+            let enteredBills = document.querySelector("#enteredBills")
+            let div = document.createElement("div")
+            div.style.width = "200px"
+            div.style.padding = "10px"
+            div.style.border = "1px solid black"
+            div.style.margin = "0 20px 0 0"
+            let billNumLabel = createLabel("Сметка број:")
+            let billNumSpan = document.createElement("span")
+            billNumSpan.innerHTML = Math.floor(Math.random() * 99999)
+            let billNumBr = document.createElement("br")
+            let labelName = createLabel("Име:")
+            let spanName = createSpan(name.value)
+            let brName = createBr()
+            let labelSurname = createLabel("Презиме:")
+            let spanSurname = createSpan(surname.value)
+            let brSurname = createBr()
+            let labelId = createLabel("ID:")
+            let spanId = createSpan(id.value)
+            let brId = createBr()
+            let labelMoney = createLabel("Промет:")
+            let spanMoney = createSpan()
+            let brMoney = createBr()
+            let buttonPay = document.createElement("button")
+            buttonPay.type = "button"
+            buttonPay.innerHTML = "Плати"
+            function createLabel(value) {
+                let label = document.createElement("label")
+                label.innerHTML = value
+                return label
+            }
+            function createSpan(value) {
+                let span = document.createElement("span")
+                span.innerHTML = value
+                return span
+            }
+            function createBr() {
+                let br = document.createElement("br")
+                return br
+            }
+            appendElement(billNumLabel)
+            appendElement(billNumSpan)
+            appendElement(billNumBr)
+            appendElement(labelName)
+            appendElement(spanName)
+            appendElement(brName)
+            appendElement(labelSurname)
+            appendElement(spanSurname)
+            appendElement(brSurname)
+            appendElement(labelMoney)
+            appendElement(spanMoney)
+            appendElement(brMoney)
+            appendElement(buttonPay)
+            function appendElement(element) {
+                div.appendChild(element)
+            }
+            if(money.value <= 1500) {
+                div.style.backgroundColor = "green"
+            } else div.style.backgroundColor = "red"
+            buttonPay.addEventListener("click", () => {
+                let payedBills = document.querySelector("#payedBills")
+                buttonPay.remove()
+                payedBills.appendChild(div)
+            })
+            enteredBills.appendChild(div)
+        }
+    })
+</script>
+</body>
+</html>

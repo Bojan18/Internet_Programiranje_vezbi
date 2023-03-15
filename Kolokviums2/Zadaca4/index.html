@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+    <link rel="stylesheet" href="jquery_ui.css">
+</head>
+<body>
+</body>
+<style>
+</style>
+<script>
+    $(document).ready(function (){
+        let input = $('<input>')
+        input.appendTo('body')
+
+        let button = $('<button>Постави</button>')
+        button.appendTo('body')
+        button.click(function (){
+            //red,100,50,div1
+            let str = $(input).val()
+
+            let parts = str.split(",")
+
+            let newDiv = $('<div>' + parts[3] + '</div>')
+            newDiv.css({
+                'background-color' : parts[0],
+                "width" : parts[1] + "px",
+                "height" : parts[2] + "px",
+                "text-align" : "center"
+            })
+
+            newDiv.appendTo('body')
+
+        })
+        console.log("ON")
+    });
+
+</script>
+</html>

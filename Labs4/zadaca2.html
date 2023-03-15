@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body id="body">
+
+<div id="div">
+    <p>Items:</p>
+    <input type="text" id="items">
+    <br>
+    <p>Type:</p>
+    <select id="buttons">
+        <option>Radio button</option>
+        <option>Check box</option>
+    </select>
+    <br>
+    <button onclick="prikazi()">Прикажи</button>
+</div>
+
+</body>
+
+<script>
+    function prikazi(){
+        let items = document.getElementById("items").value
+        let buttonType = document.getElementById("buttons").value
+        let body = document.getElementById("body")
+        let line = items.split(", ");
+
+        let itemsArr = []
+
+        for (let i = 0; i < line.length; i++) {
+            itemsArr[i] = line[i];
+        }
+
+        let newDiv = document.createElement("div")
+        //newDiv.style.backgroundColor = "lightgreen"
+
+        for (let i = 0; i < line.length; i++) {
+            let button = document.createElement("input")
+
+            let p = document.createElement("p")
+            let pNode = document.createTextNode(itemsArr[i])
+
+            p.appendChild(pNode)
+
+            if(buttonType === "Radio button")
+                button.setAttribute("type", "radio")
+            else if(buttonType === "Check box")
+                button.setAttribute("type", "checkbox")
+
+            newDiv.append(button)
+            newDiv.appendChild(p)
+        }
+
+        body.append(newDiv)
+
+        console.log(itemsArr)
+        console.log(buttonType)
+    }
+</script>
+<style>
+    p{
+        display: inline-block;
+    }
+</style>
+</html>

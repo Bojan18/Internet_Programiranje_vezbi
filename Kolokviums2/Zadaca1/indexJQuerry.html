@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<button id="moveLeft"><</button>
+<button id="moveRight">></button>
+
+</body>
+<style>
+</style>
+<script>
+    let body = document.getElementById('body')
+    let index = 0
+    let data = '[{"background-color":"red", "width":"100px", "height":"100px"}, {"background-color":"green", "width":"50px", "height":"100px"}, {"background-color":"blue", "width":"100px", "height":"50px"}]'
+    data = JSON.parse(data)
+
+    $div = $('<div></div>')
+    $div.css({
+        "background-color" : data[0]['background-color'],
+        "width" : data[0]['width'],
+        "height" : data[0]['height'],
+        "position" : 'absolute'
+    })
+    $div.attr('id', 'movingDiv')
+
+    $div.appendTo('body')
+
+    $("#moveRight").click(function (){
+        index++
+        if(index >= data.length)
+            index = 0
+        $moveDiv = $('#movingDiv')
+        $moveDiv.animate({
+            left : 2000 + "px"
+        })
+        $moveDiv.attr('id', 'stationaryDiv')
+
+        $newDiv = $('<div></div>')
+        $newDiv.css({
+            "background-color" : data[index]['background-color'],
+            "width" : data[index]['width'],
+            "height" : data[index]['height'],
+            "position" : 'absolute',
+            "left" : -100 + "px"
+        })
+        $newDiv.attr('id', 'movingDiv')
+        $newDiv.appendTo('body')
+        $newDiv.animate({
+            left : 0 + "px"
+        })
+    })
+
+    $("#moveLeft").click(function (){
+        index--
+        if(index < 0)
+            index = data.length-1
+
+        $moveDiv = $('#movingDiv')
+        $moveDiv.animate({
+            left : -100 + "px"
+        })
+        $moveDiv.attr('id', 'stationaryDiv')
+
+        $newDiv = $('<div></div>')
+        $newDiv.css({
+            "background-color" : data[index]['background-color'],
+            "width" : data[index]['width'],
+            "height" : data[index]['height'],
+            "position" : 'absolute',
+            "left" : 2000 + "px"
+        })
+        $newDiv.attr('id', 'movingDiv')
+        $newDiv.appendTo('body')
+        $newDiv.animate({
+            left : 0 + "px"
+        })
+    })
+
+
+</script>
+
+</html>

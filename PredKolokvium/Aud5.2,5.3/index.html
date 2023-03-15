@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Project details</h2>
+
+<div>
+    <p>Author</p>
+    <input type="text" id="author">
+    <p>Project</p>
+    <input type="projcet" id="project">
+    <p>Cost</p>
+    <input type="text" id="cost">
+</div>
+
+<button onclick="add()">Add</button>
+
+<h2>Project list - Total cost : <span id="result">0</span></h2>
+
+<table id="table">
+</table>
+
+</body>
+<script src="script.js"></script>
+<style>
+    #table, td {
+        padding: 7px;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <input type="text" id="input">
+    <button onclick="addToArray()">Add</button>
+    <button onclick="display()">Display</button>
+</div>
+<div id="result">
+
+</div>
+</body>
+
+<script>
+    let arr = [];
+    let index = 0;
+
+    function addToArray() {
+        let num = document.getElementById("input").value;
+        if (num === "") {
+            alert("ffs enter a number");
+            return;
+        }
+        arr[index] = num;
+
+        index++;
+        document.getElementById("input").value = "";
+    }
+
+    function display() {
+        let res = document.getElementById("result");
+        let str = "";
+        //str += arr[0];
+        //str += arr[1];
+
+        for (let i = 0; i < arr.length; i++) {
+            str += "Element " + i + " = " + arr[i] + "<br/>";
+        }
+
+        res.innerHTML = str;
+    }
+
+</script>
+
+</html>

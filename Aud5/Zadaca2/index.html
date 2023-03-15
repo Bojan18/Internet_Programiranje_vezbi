@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadaca 2</title>
+</head>
+<body>
+<h2>Project details</h2>
+<div>
+    <p>Author</p>
+    <input type="text" id="author">
+    <br>
+    <p>Project</p>
+    <input type="text" id="project">
+    <br>
+    <p>Cost</p>
+    <input type="text" id="cost">
+    <br>
+</div>
+<button onclick="add()">Add</button>
+<div>
+    <p>Project list</p>
+    <br>
+    <table id="table">
+
+    </table>
+</div>
+
+</body>
+<script src="script.js"></script>
+<style>
+    p{
+        display: inline-block;
+    }
+    table, td{
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    button{
+        width: 200px;
+    }
+</style>
+</html>
